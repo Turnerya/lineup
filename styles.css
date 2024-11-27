@@ -72,18 +72,28 @@ h1 {
   background-color: #900;
 }
 
+.pitch .player {
+  /* Make players smaller on the field */
+  transform: scale(0.7) translate(-50%, -50%);
+  width: 70px; /* Smaller base size */
+  height: 70px;
+}
+
 /* Pitch styles */
 .pitch {
   height: 720px;
   width: 650px;
-  background-image: url("https://scontent.ftlv6-1.fna.fbcdn.net/v/t39.30808-6/465153807_1116485330484938_8667737722067288698_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=bd9a62&_nc_ohc=PlDp0C3ZRVwQ7kNvgFu-lEw&_nc_zt=23&_nc_ht=scontent.ftlv6-1.fna&_nc_gid=AkIuVKsIQLTOUFQbJuNl4Fx&oh=00_AYCZSJwb7rPWywTtop-bQwnqE1KMsQ6K7rmgv5ZztWTpfw&oe=6737DA8D");
-  background-size: cover;
+  background-image: url("https://i.ibb.co/R4Ty3CT/image.jpg");
+  background-size: contain; /* Changed from cover to contain */
   background-position: center;
+  background-repeat: no-repeat;
   border: 3px solid #b80000;
   border-radius: 15px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
   margin: 30px auto;
   position: relative;
+  overflow: visible; /* Changed from default to visible */
+  touch-action: none; /* Better touch handling */
 }
 
 /* Bench styles */
@@ -229,119 +239,140 @@ h2 {
   color: #fff;
 }
 
-/* Mobile styles - UPDATED */
+/* Mobile styles */
 @media (max-width: 768px) {
   .container {
-    flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
   }
 
+  .pitch .player {
+    transform: scale(0.6) translate(-50%, -50%); /* Even smaller on mobile */
+    width: 60px;
+    height: 60px;
+}
+
   .main-content {
-    margin: 0;
-    width: 100%;
-    padding: 10px;
-    height: 65vh; /* Fixed height for pitch area */
-    overflow: hidden;
+      margin: 0;
+      width: 100%;
+      padding: 10px;
+      height: 65vh;
+      overflow: hidden;
   }
 
   h1 {
-    font-size: 1.5em;
-    margin: 5px 0;
+      font-size: 1.5em;
+      margin: 5px 0;
   }
 
   .pitch-container {
-    padding-top: 30px;
-    height: calc(100% - 40px); /* Subtract header height */
+      padding-top: 30px;
+      height: calc(100% - 40px);
   }
 
   .pitch {
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-    max-height: calc(100% - 80px); /* Leave space for trash bin */
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+      max-height: calc(100% - 80px);
+      background-size: contain;
+      background-repeat: no-repeat;
+      touch-action: none; /* Prevent default touch scrolling */
+      position: relative;
   }
 
   .bench {
-    position: fixed;
-    bottom: 60px; /* Height of position selector */
-    top: auto;
-    right: 0;
-    left: 0;
-    height: 25vh; /* Reduced height */
-    width: 100%;
-    padding: 10px;
-    z-index: 100;
+      position: fixed;
+      bottom: 60px;
+      top: auto;
+      right: 0;
+      left: 0;
+      height: 25vh;
+      width: 100%;
+      padding: 10px;
+      z-index: 100;
   }
 
+
+  .pitch .player img {
+    width: 65%;
+    height: 65%;
+}
+
+.pitch .player span {
+    font-size: 0.8em;
+    margin-top: 2px;
+}
   .mobile-position-selector {
-    display: flex;
-    justify-content: space-around;
-    height: 60px;
+      display: flex;
+      justify-content: space-around;
+      height: 60px;
   }
 
   .player {
-    width: 50px;
-    height: 50px;
+      width: 50px;
+      height: 50px;
+          touch-action: none;
+    user-select: none;
   }
 
   .player span {
-    font-size: 0.6em;
+      font-size: 0.6em;
   }
 
   .position-group {
-    display: none;
-    height: 100%;
-    overflow-y: auto;
+      display: none;
+      height: 100%;
+      overflow-y: auto;
   }
 
   .position-group.active {
-    display: block;
+      display: block;
   }
 
   .player-list {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
-    padding: 5px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+      padding: 5px;
   }
 
   .controls-container {
-    padding: 0 10px;
+      padding: 0 10px;
   }
 
   .trash-bin {
-    bottom: 5px;
-    width: 100px;
-    height: 40px;
+      bottom: 5px;
+      width: 100px;
+      height: 40px;
   }
 
   .trash-bin img {
-    width: 20px;
-    height: 20px;
-    margin-bottom: 2px;
+      width: 20px;
+      height: 20px;
+      margin-bottom: 2px;
   }
 
   .trash-bin span {
-    font-size: 0.7em;
+      font-size: 0.7em;
   }
 
   h2 {
-    font-size: 1.5em;
-    padding: 10px;
-    margin-bottom: 10px;
+      font-size: 1.5em;
+      padding: 10px;
+      margin-bottom: 10px;
   }
 
   .group-title {
-    font-size: 1.3em;
-    padding: 8px;
-    margin: 5px 0;
+      font-size: 1.3em;
+      padding: 8px;
+      margin: 5px 0;
   }
 
-  /* Ensure proper spacing for the entire layout */
   body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    overflow: hidden;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
   }
 }
